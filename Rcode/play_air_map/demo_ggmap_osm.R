@@ -15,7 +15,7 @@ library(OpenStreetMap)
 
 map <- openmap(c(lat= 25.04,   lon= 121.520),
               c(lat= 25.025,   lon= 121.535),
-               minNumTiles=16, type="osm")
+               type="osm")
 mapLatLon <- openproj(map)
 g <- autoplot(mapLatLon)
 # show 政大公企 location
