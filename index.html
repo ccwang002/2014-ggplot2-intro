@@ -902,9 +902,44 @@ for(s in seq(from=2, to=5, by=0.5))
             <p class="inline">靜態</p>
             <center><img src="r-fig/ggmap_earthquake.png" width="95%" alt=""></center>
         </div>
-        <div class="left">
+        <div class="right">
             <p class="inline">動態</p>
             <center><img src="r-fig/ggmap_earthquake.gif" width="95%" alt=""></center>
+        </div>
+    </div></section>
+
+    <section id="osm" class="slide"><div>
+        <h2>OpenStreetMap + ggmap</h2>
+        <ul>
+            <li><a href="http://openstreetmap.tw/">OpenStreetMap 台灣</a> 簡稱OSM， 是自由而且開源的協作全球地圖</li>
+            <li>可以抓取到比 Google Map 更豐富的資訊</li>
+            <li>ggmap 裡可以選擇別的圖資來源使用 OSM，但現在 API 壞了</li>
+            <li>使用另一套件 <code>OpenStreetMap</code></li>
+            <li>需要編譯 <code>gdal, rgdal</code></li>
+            <li>幸好仍然可以結合 ggplot2 使用</li>
+        </ul>
+    </div></section>
+
+    <section id="play-osm" class="slide twocol"><div>
+        <p class="tighter">標示出演講位置，政大公企中心座標</p>
+        <div class="left"><pre class="language-r small">
+<code>library(ggplot2)
+library(OpenStreetMap)
+map <- openmap(
+    c(lat= 25.04, lon= 121.520),
+    c(lat= 25.025, lon= 121.535),
+    type="osm"
+)
+g <- autoplot(openproj(map))
+# 顯示政大公企 location
+g + geom_point(
+    data=NULL, x=121.52780, y=25.03049,
+    size=7, color="red", fill="pink",
+    shape=23
+)
+</code></pre></div>
+        <div class="right">
+            <p class="tighter"><img src="r-fig/ggmap_osm.png" style="width: 400px;" alt=""/></p>
         </div>
     </div></section>
 
